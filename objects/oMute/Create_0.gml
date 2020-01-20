@@ -1,0 +1,2 @@
+/// @desc
+global.mute = false

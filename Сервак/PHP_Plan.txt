@@ -1,0 +1,44 @@
+PHP/MySQL 'GET' server
+
+  Is used for:
+	-Logging in
+	-Matchmaking
+	-Players' profiles
+	-Leaderboards*
+	
+  Architecture:
+	-Players send requests to the server when logging
+	-Server gets them and responds (true or false), based on MySQL data it has
+	-If a player gets a negative response or doesn't get it at all - online functions are disabled.
+	Howewer, you they can still try to reconnect
+	-Otherwise, the player can now play online with other players or see the leaderboards
+	
+	-When a player presses the "Play online" button, the client sends an http request, 
+	which contains the player's name.
+	-The server adds these name and MMR to its "Searching now" MySQL database.
+	-Then server sends the whole database to the client (needed to find mmr-equal opponents)
+	-The client waits until it finds a perfect opponent (if there is no such, "perfect opponent" conditions
+	become easier to fit with time) 
+	For example: in first 2 seconds match only makes if there is an opponent with exactly the same MMR,
+	then range of required MMR becomes wider, alowing the player to fall against not so worthy opponent.
+	-Finaly, when a game is found, player sends the request again, to let server know about start of the game.
+	Server deletes the player and his opponent from the database to ensure noone will try to make a match with him.
+	Server sends a respond to both players and they connect to the Python socket server.
+	
+	For profiles and leaderboards it's actually pretty simple:
+	-Client requests to see some info
+	-Server responds, sending that info to the client
+	
+
+Python socket server
+
+  Is used for:
+	-Multiplayer matches in real time
+	
+  Architecture:
+	-When a client is connected, server creates an entry in his clients list
+	-If the connection is failed - the match shuts
+	-Players(clients) send their x/y/rotation/other_physics_stuff to the server (in bin buffer format)
+	-Server gets the data and stores it in its list
+	-As often as possible, server sends the data back to all clients
+	-Clients use the data they get by creating/changing instances of other players and stuff they made
