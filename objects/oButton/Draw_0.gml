@@ -46,4 +46,27 @@ else if type = "Select class" {
 else if type = "exit" {
 	sprite_index = sButton_exit
 }
+else if type = "bot" {
+	draw_text(x,y,"Singleplayer")
+}
+else if type = "snow" {
+	draw_set_color(c_lime)
+	draw_text(x,y,"Snow (n/a in web)")
+}
 
+else if type = "crash" {
+	draw_set_color(c_blue)
+	draw_text(x,y,"rip pc")
+}
+else if type = "ear rape" {
+	draw_set_color(c_lime)
+	draw_text(x,y,"rip ears")
+}
+else if type = "rip" {
+	draw_set_color(c_lime)
+	draw_text(x,y,"Windows only")
+}
+else if type = "rip eyes" {
+	draw_set_color(c_purple)
+	draw_text(x,y,"rip eyes")
+}

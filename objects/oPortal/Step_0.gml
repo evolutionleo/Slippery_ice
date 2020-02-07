@@ -9,7 +9,7 @@ with(oPortal) {
 }
 
 tp = instance_place(x,y,oSolid)
-if(tp != noone and image_index == 1) {
+if(tp != noone and tp.alarm[11] <= 0) {
 	deltax = phy_position_x - tp.phy_position_x
 	deltay = phy_position_y - tp.phy_position_y
 	//if(reverse or pair.reverse) {
@@ -23,4 +23,7 @@ if(tp != noone and image_index == 1) {
 		tp.phy_position_x = pair.phy_position_x + deltax
 		tp.phy_position_y = pair.phy_position_y - deltay
 	//}
+	//alarm[0] = 45
+	//pair.alarm[0] = 45
+	tp.alarm[11] = 45
 }

@@ -4,11 +4,20 @@
     "mvc": "1.0",
     "name": "oSolid",
     "eventList": [
-        
+        {
+            "id": "39bebacc-bdc3-40c3-8a18-f67420495932",
+            "modelName": "GMEvent",
+            "mvc": "1.0",
+            "IsDnD": false,
+            "collisionObjectId": "00000000-0000-0000-0000-000000000000",
+            "enumb": 11,
+            "eventtype": 2,
+            "m_owner": "f99c9385-74eb-48bc-ae1f-501b114c6b92"
+        }
     ],
     "maskSpriteId": "00000000-0000-0000-0000-000000000000",
     "overriddenProperties": null,
-    "parentObjectId": "00000000-0000-0000-0000-000000000000",
+    "parentObjectId": "d7d4df3b-e978-40c3-b359-8847208df33a",
     "persistent": false,
     "physicsAngularDamping": 0.1,
     "physicsDensity": 0.5,

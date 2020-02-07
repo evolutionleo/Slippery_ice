@@ -62,9 +62,9 @@ switch(class)
 	case class_type.mage:
 		dodge_duration = 30
 		dodge_cooldown = 200
-		spd = 700
-		proof = 130
-		damage = 120
+		spd = 900
+		proof = 110
+		damage = 140
 		sprite_index = sMage
 		//sprite_index = sSnegovik
 		alarm[3] = 10

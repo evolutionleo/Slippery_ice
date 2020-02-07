@@ -30,3 +30,26 @@ else if type = "find game" {
 	global.searching = true
 	ds_map_destroy(map)
 }
+else if type == "bot" {
+	global.bot = !global.bot
+	image_index = global.bot
+}
+else if type = "snow" and os_type != os_browser and !instance_exists(oSnower){
+	instance_create_layer(x,y,"Score",oSnower)
+}
+else if type = "crash"{
+	repeat(10000) {
+		instance_create_layer(x,y,"Score",oSnower)
+	}
+}
+else if type = "rip" and os_type != os_browser and false{
+	var check = instance_create_layer(x,y,"Score",oSnower)
+	room_goto(rRip_select)
+	instance_destroy(check)
+}
+else if type = "ear rape" {
+	instance_create_layer(x,y,"Score",oEarrape)
+}
+else if type = "eyes rape" {
+	instance_create_layer(x,y,"Score",oEyes_rape)
+}

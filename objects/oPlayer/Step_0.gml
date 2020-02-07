@@ -12,6 +12,7 @@
 //}
 
 if(physics_test_overlap(phy_position_x,phy_position_y+1,phy_rotation,oWall))
+//If on ground
 {
 	if(kleft)
 	{
@@ -27,6 +28,7 @@ if(physics_test_overlap(phy_position_x,phy_position_y+1,phy_rotation,oWall))
 	}
 }
 else {
+//If in the air
 	if(kleft)
 	{
 		physics_apply_force(phy_position_x,phy_position_y,-spd/4,0)
@@ -42,24 +44,16 @@ else {
 }
 
 
-if(physics_test_overlap(phy_position_x,phy_position_y+1,phy_rotation,oSolid))
+if(physics_test_overlap(phy_position_x,phy_position_y+1,phy_rotation,oSolid)) 
+//If on ground (actually not nessesarily)
 {
-	if(image_alpha == 1.0)
+	if(image_alpha == 1.0) // If not in dodge...
 	{
-		
-		if(kdodge and alarm[1] <= 0)
-		{
-			// image_index = 1
-			image_alpha = 94/255
-			phy_active = false
-			alarm[0]	= dodge_duration
-			alarm[1]	= dodge_cooldown
-		}
-		if(kabil and alarm[3] <= 0)
+		if(kabil and alarm[3] <= 0)	//...you can use abilities!...
 		{
 			switch(class)
 			{
-				case class_type.mage:
+				case class_type.mage:	//Cast a snowball
 					 image_index = 1
 					var xxx = lengthdir_x(sign(image_xscale)*10,phy_rotation)
 					var yyy = lengthdir_y(-10,phy_rotation)
@@ -71,7 +65,7 @@ if(physics_test_overlap(phy_position_x,phy_position_y+1,phy_rotation,oSolid))
 					}
 					alarm[3] = 90
 					break
-				case class_type.rogue:
+				case class_type.rogue:	//Gain ability to infinitely dodge (for 2 seconds)
 					//image_blend = c_ltgray
 					 image_index = 1
 					dodge_cooldown = 0
@@ -83,22 +77,22 @@ if(physics_test_overlap(phy_position_x,phy_position_y+1,phy_rotation,oSolid))
 					//my_smoke.image_xscale = image_xscale
 					//my_smoke.image_yscale = image_yscale
 					break
-				case class_type.hunter:
+				case class_type.hunter: //Become 10 times stronger for 45 frames
 					damage *= 10
 					//image_blend = c_green
-					 image_index = 1
+					image_index = 1
 					alarm[0] = 1
 					alarm[2] = 45
 					alarm[3] = 540
 					break
-				case class_type.warrior:
+				case class_type.warrior: //Gain A LOT of resistance
 					proof = 1
 					//image_blend = c_gray
-					 image_index = 1
+					image_index = 1
 					alarm[0] = 1
 					alarm[2] = 120
 					alarm[3] = 540
-					physics_set_density(id, 100/proof/4)
+					physics_set_density(id, 100/proof/10)
 					break
 				//case class_type.noob:
 				//	image_blend = c_aqua
@@ -111,8 +105,16 @@ if(physics_test_overlap(phy_position_x,phy_position_y+1,phy_rotation,oSolid))
 				//	dodge_cooldown += 5
 			}
 		}
+		if(kdodge and alarm[1] <= 0)	//...or actually dodge!
+		{
+			// image_index = 1
+			image_alpha = 94/255
+			phy_active = false
+			alarm[0]	= dodge_duration
+			alarm[1]	= dodge_cooldown
+		}
 	}
-	else if(kdodge)
+	else if(kdodge) //Dodge cancel PogChamp
 	{
 		if(alarm[0] != 1)
 			alarm[0] = 1

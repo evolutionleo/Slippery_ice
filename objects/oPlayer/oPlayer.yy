@@ -282,6 +282,20 @@
             "value": "1",
             "varName": "team",
             "varType": 1
+        },
+        {
+            "id": "3c01f7ed-2813-43b3-8fd8-6e80568ca50a",
+            "modelName": "GMObjectProperty",
+            "mvc": "1.0",
+            "listItems": null,
+            "multiselect": false,
+            "rangeEnabled": false,
+            "rangeMax": 10,
+            "rangeMin": 0,
+            "resourceFilter": 1023,
+            "value": "True",
+            "varName": "control",
+            "varType": 3
         }
     ],
     "solid": true,

@@ -1,0 +1,1 @@
+return mouse_x < bbox_right and mouse_x > bbox_left and mouse_y < bbox_bottom and mouse_y > bbox_top
